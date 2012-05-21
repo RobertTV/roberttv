@@ -1,0 +1,8 @@
+[
+    { "icon": "icon-home", "descr": "tv" },
+    { "icon": "icon-th-list", "descr": "epg" },
+    { "icon": "icon-film", "descr": "video" },
+    { "icon": "icon-trophy", "descr": "game" },
+    { "icon": "icon-shopping-cart", "descr": "shop" },
+    { "icon": "icon-cog", "descr": "option" }
+]

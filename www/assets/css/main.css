@@ -1,0 +1,28 @@
+@import url(bootstrap.css);
+/*
+@import url(http://fonts.googleapis.com/css?family=Stint+Ultra+Condensed|Stint+Ultra+Expanded&subset=latin,latin-ext);
+@import url(font-awesome.css);
+@import url(font-museoslab.css);
+*/
+
+h1,h2,h3,h4,h5,.icon-descr {
+    font-family: "MuseoSlab-500"; /*"Stint Ultra Condensed"*/;
+}
+
+.MuseoSlab-500 {
+    font-family: MuseoSlab-500;
+    font-weight: normal;
+    font-style: normal;
+}
+.MuseoSlab-500Italic {
+    font-family: MuseoSlab-500Italic;
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+.selected {
+    color: red;
+}
