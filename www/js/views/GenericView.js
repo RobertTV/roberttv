@@ -2,7 +2,7 @@ define([
     'jQuery',
     'Underscore',
     'Backbone',
-    'routers/eventDispatcher'
+    'routers/EventDispatcher'
 ], function ($, _, Backbone, EventDispatcher) {
 
     var GenericView = Backbone.View.extend({

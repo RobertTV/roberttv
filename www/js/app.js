@@ -6,7 +6,7 @@ define([
     'jQuery',
     'Underscore',
     'Backbone',
-    'routers/eventDispatcher',
+    'routers/EventDispatcher',
     'routers/Router',
 ], function ($, _, Backbone, EventDispatcher, Router) {
 

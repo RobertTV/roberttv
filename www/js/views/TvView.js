@@ -14,19 +14,19 @@ define([
             },
             template: _.template(tpl),
             render: function TvView_render() {
-                var tm = new Menu([
-                       {'icon': 'icon-home', 'descr': 'tv'},
-                       {'icon': 'icon-th-list', 'descr': 'epg'},
-                       {'icon': 'icon-film', 'descr': 'video'},
-                       {'icon': 'icon-trophy', 'descr': 'game'},
-                       {'icon': 'icon-shopping-cart', 'descr': 'shop'},
-                       {'icon': 'icon-cog', 'descr': 'option'}
-                   ]),
-                   tmView = new MenuView({menu: tm});
+                var m1 = new Menu({id: 'testMenu1'}),
+                    m1View = new MenuView({menu: m1, title: 'test menu 1', addClassNames: 'vertical lime'}),
+                    m2 = new Menu({id: 'testMenu2'}),
+                    m2View = new MenuView({menu: m1});
+
+                m1.fetch();
+                m2.fetch();
+                this.$el.html(this.template());
+
+                this.$el.append(m1View.render().$el);
+                //this.$el.append(m2View.render().$el);
 
                 _.log();
-                this.$el.html(this.template());
-                this.$el.append(tmView.render().$el);
                 return this;
             }
         });

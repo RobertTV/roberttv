@@ -3,33 +3,25 @@ define([
     'Underscore',
     'Backbone',
     'views/GenericView',
-    'text!templates/MenuView.html',
-    'text!templates/MenuItemView.html'
-], function ($, _, Backbone, GenericView, tpl, itemTpl) {
+    'views/MenuItemView',
+    'text!templates/MenuView.html'
+], function ($, _, Backbone, GenericView, MenuItemView, tpl) {
 
-    var MenuItemView = Backbone.View.extend({
-            template: _.template(itemTpl),
-            initialize: function MenuItemView_initialize(options) {
-                _.bindAll(this, 'render');
-                this.model.bind('select', this.onSelect, this);
-            },
-            render: function MenuItemView_render() {
-                this.$el.html(this.template(this.model.toJSON()));
-                return this;
-            },
-            onSelect: function MenuItemView_onSelect(msg) {
-                this.$el.addClass('selected');
-                _.log('halo halo: ' + JSON.stringify(msg));
-            }
-        }),
-        MenuView = GenericView.extend({
+    var MenuView = GenericView.extend({
             events: _.extend({}, GenericView.prototype.globalEvents),
             template: _.template(tpl),
-            className: 'MenuView',
+            className: 'menuView',
             initialize: function MenuView_initialize(options) {
-                this.menu = options.menu;
-                this.itemViews = [];
-                _.bindAll(this, 'render');
+                this.menu = options.menu || [];
+                this.title = options.title || '';
+                this.$el.addClass(options.addClassNames || '');
+
+//                this.itemViews = [];
+//                this.menu.forEach(function forEachItem(item) {
+//                    this.itemViews.push(new MenuItemView());
+//                }, this);
+//
+//                _.bindAll(this, 'render');
 
                 this.menu.bind('reset', this.render, this);
                 this.menu.bind('select', this.onSelect, this);
@@ -49,10 +41,10 @@ define([
                     return new MenuItemView({model: item});
                 }, this);
 
-                this.$el.html(this.template({classes: 'vertical'}));
+                this.$el.html(this.template({title: this.title}));
                 this.itemViews.forEach(function forEachView(itemView) {
-                    this.$el.append(itemView.render().$el);
-                });
+                    $('ul').append(itemView.render().$el);
+                }, this);
 
                 return this;
             },

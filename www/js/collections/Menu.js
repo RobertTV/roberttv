@@ -1,17 +1,18 @@
 define([
     'jQuery',
     'Underscore',
-    'Backbone'
-], function ($, _, Backbone, tpl) {
+    'Backbone',
+    'models/MenuItem'
+], function ($, _, Backbone, MenuItem) {
 
-    var MenuItem = Backbone.Model.extend({
-            initialize: function MenuItem_initialize(options) {
-                _.log(options);
-            }
-        }),
-        Menu = Backbone.Collection.extend({
+    var Menu = Backbone.Collection.extend({
             model: MenuItem,
-            initialize: function  Menu_initialize() {
+            id: null,
+            url: function() {
+                return 'assets/json/' + this.id + '.json';
+            },
+            initialize: function  Menu_initialize(options) {
+                this.id = options.id;
                 this.selected = 0;
             },
             select: function Menu_select(idx) {
